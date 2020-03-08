@@ -27,8 +27,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (this.gameOverCanvas.activeInHierarchy && Input.GetButton("Jump"))
-            RestartLevel();
+        if (this.gameOverCanvas.activeInHierarchy)
+        {
+            if (Input.GetButton("Jump"))
+                RestartLevel();
+            else if (Input.GetButton("Escape"))
+                Application.Quit();
+        }
 
         if (!this.gameOverCanvas.activeInHierarchy)
             SpawnMobie();

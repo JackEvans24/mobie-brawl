@@ -13,6 +13,7 @@ public class GameOver : MonoBehaviour
     public Text mobiesText;
     public Text commentText;
     public Text restartText;
+    public Text quitText;
     private Text[] textObjects;
 
     public float backgroundAlpha = 100f;
@@ -27,7 +28,8 @@ public class GameOver : MonoBehaviour
             murderCountText,
             mobiesText,
             commentText,
-            restartText
+            restartText,
+            quitText
         };
     }
 
