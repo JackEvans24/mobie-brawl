@@ -8,6 +8,7 @@ public class PlayerLife : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public CharacterController2D controller;
+    public GameManager gameManager;
     public Text healthValueText;
     public float maxHealth = 100f;
     private float currentHealth;
@@ -56,7 +57,7 @@ public class PlayerLife : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.velocity = Vector2.zero;
 
-        StartCoroutine(GameManager.RestartInSeconds(5));
+        this.gameManager.GameOver();
 
         this.enabled = false;
     }
