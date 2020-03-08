@@ -408,9 +408,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54b6f43f2846b64cb969880d4a5003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 0}
-  gameOverText: {fileID: 0}
+  ui: {fileID: 927700937}
+  gameOverCanvas: {fileID: 962513300}
   murderValueText: {fileID: 2119942560}
+  gameOverMurderValueText: {fileID: 2128503370}
+  gameOverCommentText: {fileID: 782204308}
 --- !u!4 &328435685
 Transform:
   m_ObjectHideFlags: 0
@@ -1332,6 +1334,7 @@ MonoBehaviour:
   commentText: {fileID: 782204308}
   restartText: {fileID: 791234714}
   backgroundAlpha: 100
+  textShowInterval: 0.3
 --- !u!114 &962513306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2808,6 +2811,7 @@ MonoBehaviour:
   rb: {fileID: 2061116368}
   animator: {fileID: 2061116370}
   controller: {fileID: 2061116372}
+  gameManager: {fileID: 328435684}
   healthValueText: {fileID: 1036705789}
   maxHealth: 100
   respawnPosition: {fileID: 593101063}
