@@ -44,14 +44,25 @@ public class Patrol : Enemy
 
     private void CheckForPlayer()
     {
-        RaycastHit2D playerInfo = Physics2D.Raycast(platformDetection.position, Vector2.right * directionCoefficient, playerDetectionDistance, playerLayer);
-        if (playerInfo.collider && playerInfo.collider.tag == "Player")
+        RaycastHit2D playerRightInfo = Physics2D.Raycast(platformDetection.position, Vector2.right, playerDetectionDistance, playerLayer);
+        RaycastHit2D playerLeftInfo = Physics2D.Raycast(platformDetection.position, Vector2.left, playerDetectionDistance, playerLayer);
+        if (this.ValidPlayer(playerLeftInfo.collider))
         {
-            this.player = playerInfo.collider.transform;
+            this.player = playerLeftInfo.collider.transform;
+        }
+        else if (this.ValidPlayer(playerRightInfo.collider))
+        {
+            this.player = playerRightInfo.collider.transform;
+        }
+
+        if (player != null)
+        {
             this.calmEyes.SetActive(false);
             this.angryEyes.SetActive(true);
         }
     }
+
+    private bool ValidPlayer(Collider2D collider) => collider != false && collider.tag == "Player";
 
     private void CheckForObstacles()
     {
