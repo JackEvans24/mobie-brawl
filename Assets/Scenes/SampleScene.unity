@@ -408,11 +408,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54b6f43f2846b64cb969880d4a5003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mobie: {fileID: 0}
   ui: {fileID: 927700937}
   gameOverCanvas: {fileID: 962513300}
   murderValueText: {fileID: 2119942560}
   gameOverMurderValueText: {fileID: 2128503370}
   gameOverCommentText: {fileID: 782204308}
+  mobieSpawnInterval: 2.5
+  mobieLimit: 5
 --- !u!4 &328435685
 Transform:
   m_ObjectHideFlags: 0
@@ -882,7 +885,7 @@ GameObject:
   - component: {fileID: 764110498}
   m_Layer: 0
   m_Name: MobieGenerator
-  m_TagString: Untagged
+  m_TagString: MobieGenerator
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -899,8 +902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bca720ce5dde244b8fe5e31de54a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobie: {fileID: 8449577330784952958, guid: a9dfffe99fcb361469d75deb6a1a99ec, type: 3}
-  spawnInterval: 2
 --- !u!4 &764110499
 Transform:
   m_ObjectHideFlags: 0
