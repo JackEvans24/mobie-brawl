@@ -31,8 +31,11 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetButton("Jump"))
                 RestartLevel();
-            else if (Input.GetButton("Escape"))
+            else if (Input.GetButton("Cancel"))
+            {
+                Debug.Log("Quit");
                 Application.Quit();
+            }
         }
 
         if (!this.gameOverCanvas.activeInHierarchy)
