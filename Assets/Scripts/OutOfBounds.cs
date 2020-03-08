@@ -8,6 +8,10 @@ public class OutOfBounds : MonoBehaviour
         {
             StartCoroutine(GameManager.RestartInSeconds(1));
         }
+        else if (other.gameObject.tag == "Mobie")
+        {
+            other.GetComponent<Enemy>().DieExternal();
+        }
         else
         {
             Destroy(other.gameObject);

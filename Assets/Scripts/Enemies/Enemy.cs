@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
+    private GameManager gameManager;
 
     protected bool recoiling = false;
     public float recoilTime = 20f;
@@ -15,6 +16,11 @@ public class Enemy : MonoBehaviour
     public float attackDamage = 10f;
 
     public RemoveFromGame removeScript;
+
+    void Awake()
+    {
+        this.gameManager = (GameManager)Object.FindObjectOfType(typeof(GameManager));
+    }
 
     protected void OnStart()
     {
@@ -58,9 +64,16 @@ public class Enemy : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.velocity = Vector2.zero;
 
+        this.DieExternal();
+    }
+
+    public void DieExternal()
+    {
         foreach (var collider in this.GetComponents<Collider2D>()) {
             collider.enabled = false;
         }
+
+        this.gameManager.IncrementMurderCount();
         
         StartCoroutine(this.removeScript.Remove());
         this.enabled = false;
