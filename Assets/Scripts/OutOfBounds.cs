@@ -6,7 +6,7 @@ public class OutOfBounds : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            StartCoroutine(GameManager.RestartInSeconds(1));
+            other.GetComponent<PlayerLife>().Respawn();
         }
         else if (other.gameObject.tag == "Mobie")
         {

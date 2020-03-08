@@ -11,29 +11,35 @@ public class PlayerLife : MonoBehaviour
     public Text healthValueText;
     public float maxHealth = 100f;
     private float currentHealth;
+    public Transform respawnPosition;
+    public float respawnDamage;
 
     void Start()
     {
-        this.currentHealth = this.maxHealth;
-        this.SetHealthText();
-
-        this.animator.SetFloat("Health", this.currentHealth);
+        this.SetHealth(this.maxHealth);
     }
 
-    private void SetHealthText()
+    private void SetHealth(float health)
     {
+        this.currentHealth = health;
+
         this.healthValueText.text = Mathf.Max(this.currentHealth, 0).ToString();
         if (this.currentHealth <= 0)
             this.healthValueText.color = new Color(212, 2, 2);
+
+        this.animator.SetFloat("Health", this.currentHealth);    }
+
+    public void Respawn()
+    {
+        this.rb.position = this.respawnPosition.position;
+        this.TakeDamage(respawnDamage);
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        this.SetHealthText();
+        this.SetHealth(this.currentHealth - damage);
 
         this.animator.SetTrigger("Hurt");
-        this.animator.SetFloat("Health", this.currentHealth);
 
         if (currentHealth <= 0)
             Die();
