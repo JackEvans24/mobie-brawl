@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
 
     protected void OnUpdate()
     {
+        this.animator.SetFloat("VerticalSpeed", this.rb.velocity.y);
+        
         if (recoiling)
             this.CheckRecoil();
         else if (currentHealth <= 0)
@@ -40,12 +42,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerLife>().TakeDamage(attackDamage);
-            other.GetComponent<CharacterController2D>().Recoil(rb.position);
+            other.GetComponent<PlayerLife>().TakeDamage(attackDamage, rb.position);
         }
     }
 

@@ -2204,11 +2204,13 @@ MonoBehaviour:
   rb: {fileID: 2061116368}
   animator: {fileID: 2061116370}
   controller: {fileID: 2061116372}
+  sprite: {fileID: 1889900438}
   gameManager: {fileID: 328435684}
   healthValueText: {fileID: 1036705789}
   maxHealth: 100
   respawnPosition: {fileID: 593101063}
   respawnDamage: 10
+  recoveryTime: 2
 --- !u!114 &2119942560 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7111082250278746236, guid: ae66c289eeca0124a916bb31ab712294,
