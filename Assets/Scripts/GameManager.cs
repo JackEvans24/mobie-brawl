@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     private float mobieSpawnIntervalRemaining;
     public float mobieLimit = 10;
 
+    public LayerMask playerLayer;
+    public float noSpawnRadius;
+
     private void Start()
     {
         this.mobieSpawnIntervalRemaining = this.mobieSpawnInterval;
@@ -39,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (!this.gameOverCanvas.activeInHierarchy)
-            SpawnMobie();
+            MobieSpawnCheck();
     }
 
     public static IEnumerator RestartInSeconds(float seconds)
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
         this.gameOverCommentText.text = $"({comment})";
     }
 
-    private void SpawnMobie()
+    private void MobieSpawnCheck()
     {
         var mobies = GameObject.FindGameObjectsWithTag("Mobie").Where(m => m.GetComponent<Enemy>().currentHealth > 0);
 
@@ -96,12 +99,27 @@ public class GameManager : MonoBehaviour
         }
         else if (mobieLimit > mobies.Count())
         {
+            this.SpawnMobie();
+            mobieSpawnIntervalRemaining = mobieSpawnInterval;
+        }
+    }
+
+    private void SpawnMobie() {
             var spawnPoints = GameObject.FindGameObjectsWithTag("MobieGenerator");
+            spawnPoints = spawnPoints.Where(s =>
+                !Physics2D.OverlapCircleAll(s.transform.position, this.noSpawnRadius, this.playerLayer).Any()
+            ).ToArray();
+
             var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count())];
 
             GameObject.Instantiate(mobie, spawnPoint.transform.position, spawnPoint.transform.rotation);
+    }
 
-            mobieSpawnIntervalRemaining = mobieSpawnInterval;
+    private void OnDrawGizmosSelected()
+    {
+        var spawnPoints = GameObject.FindGameObjectsWithTag("MobieGenerator");
+        foreach (var s in spawnPoints) {
+            Gizmos.DrawWireSphere(s.transform.position, this.noSpawnRadius);
         }
     }
 

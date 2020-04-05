@@ -502,7 +502,7 @@ MonoBehaviour:
   speed: 0.8
   chaseSpeed: 3
   groundDetectionDistance: 2
-  obstacleDetectionDistance: 1
+  obstacleDetectionDistance: 0.2
   playerDetectionDistance: 10
   groundLayer:
     serializedVersion: 2

@@ -337,6 +337,10 @@ MonoBehaviour:
   gameOverCommentText: {fileID: 782204308}
   mobieSpawnInterval: 2.5
   mobieLimit: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  noSpawnRadius: 5
 --- !u!4 &328435685
 Transform:
   m_ObjectHideFlags: 0
@@ -444,7 +448,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511628679
 GameObject:
@@ -729,7 +733,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &628793010
 GameObject:
@@ -1176,7 +1180,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1108833556
 PrefabInstance:
@@ -2157,7 +2161,7 @@ MonoBehaviour:
   m_JumpCancelCoefficient: 4
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_GroundCheck: {fileID: 95096731}
   runSpeed: 12
   recoilStrength: 20
@@ -2359,7 +2363,7 @@ PrefabInstance:
     - target: {fileID: 6004731114358767139, guid: e6abcc416f655d148899acaf41c5311b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6004731114358767139, guid: e6abcc416f655d148899acaf41c5311b,
         type: 3}
