@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
 
     protected void OnUpdate()
     {
+        this.animator.SetFloat("VerticalSpeed", this.rb.velocity.y);
+        
         if (recoiling)
             this.CheckRecoil();
         else if (currentHealth <= 0)
