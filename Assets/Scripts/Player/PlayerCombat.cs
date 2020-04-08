@@ -11,13 +11,14 @@ public class PlayerCombat : MonoBehaviour
     // public float shootRecoil = 0.1f;
     public float shootInterval = 0.2f;
     private float shootIntervalRemaining;
-    
+
     public Transform blastPoint;
     public float blastRadius = 0.5f;
     public float blastDamage = 20f;
     // public float blastRecoil = 0.2f;
     public float blastInterval = 0.5f;
     private float blastIntervalRemaining;
+    public AudioClip blastClip;
 
     private void Start()
     {
@@ -50,7 +51,7 @@ public class PlayerCombat : MonoBehaviour
     {
         this.shootIntervalRemaining = this.shootInterval;
         this.animator.SetTrigger("Shoot");
-        
+
         var obj = Instantiate(projectile, shootPoint.position, shootPoint.rotation);
         // controller.Recoil(shootRecoil, controller.m_FacingRight ? Vector2.left : Vector2.right);
     }
@@ -60,7 +61,9 @@ public class PlayerCombat : MonoBehaviour
         this.blastIntervalRemaining = this.blastInterval;
         this.animator.SetTrigger("Blast");
 
-        // controller.Recoil(blastRecoil, controller.m_FacingRight ? Vector2.left : Vector2.right);
+        var audio = GetComponent<AudioSource>();
+        audio.clip = blastClip;
+        audio.Play();
     }
 
     void Blast()
