@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
@@ -12,7 +10,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (lifetime < 0)
             Destroy(this.gameObject);
-        
+
         this.transform.Translate(this.speed, 0, 0);
         lifetime -= Time.deltaTime;
     }

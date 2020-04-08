@@ -20,6 +20,7 @@ public class PlayerLife : MonoBehaviour
 
     public float recoveryTime = 1f;
     private float currentRecoveryTime;
+    public AudioClip hurtClip;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class PlayerLife : MonoBehaviour
     void Update()
     {
         if (currentRecoveryTime > 0)
-            currentRecoveryTime -= Time.deltaTime;    
+            currentRecoveryTime -= Time.deltaTime;
     }
 
     private void SetHealth(float health)
@@ -54,11 +55,16 @@ public class PlayerLife : MonoBehaviour
     {
         if (currentRecoveryTime > 0) {
             return;
-        }        
+        }
 
         this.SetHealth(this.currentHealth - damage);
 
         this.animator.SetTrigger("Hurt");
+
+        var audio = GetComponent<AudioSource>();
+        audio.clip = hurtClip;
+        audio.Play();
+
 
         if (currentHealth <= 0)
         {
@@ -79,8 +85,8 @@ public class PlayerLife : MonoBehaviour
             sprite.SetActive(!sprite.activeSelf);
             yield return new WaitForSecondsRealtime(0.1f);
         }
-        
-        sprite.SetActive(true); 
+
+        sprite.SetActive(true);
     }
 
     void Die()
@@ -92,7 +98,7 @@ public class PlayerLife : MonoBehaviour
         }
 
         this.currentRecoveryTime = 0;
-        sprite.SetActive(true); 
+        sprite.SetActive(true);
 
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.velocity = Vector2.zero;

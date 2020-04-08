@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
 
+    public AudioClip hurtClip;
+
     public float attackDamage = 10f;
 
     public RemoveFromGame removeScript;
@@ -33,7 +35,7 @@ public class Enemy : MonoBehaviour
     protected void OnUpdate()
     {
         this.animator.SetFloat("VerticalSpeed", this.rb.velocity.y);
-        
+
         if (recoiling)
             this.CheckRecoil();
         else if (currentHealth <= 0)
@@ -75,7 +77,7 @@ public class Enemy : MonoBehaviour
         }
 
         this.gameManager.IncrementMurderCount();
-        
+
         StartCoroutine(this.removeScript.Remove());
         this.enabled = false;
     }
@@ -90,5 +92,9 @@ public class Enemy : MonoBehaviour
 
         this.animator.SetTrigger("Hurt");
         this.animator.SetFloat("Health", currentHealth);
+
+        var audio = GetComponent<AudioSource>();
+        audio.clip = hurtClip;
+        audio.Play();
     }
 }
