@@ -18,7 +18,7 @@ public class Patrol : Enemy
     private float directionCoefficient { get { return this.facingRight ? 1 : -1; }}
     private bool facingRight = true;
     private bool stopped = false;
-    
+
     private Transform player;
 
     public GameObject calmEyes;
@@ -72,7 +72,7 @@ public class Patrol : Enemy
         if (groundInfo.collider == false || ValidObstacle(obstacleInfo.collider))
         {
             stopped = true;
-            StartCoroutine(this.TurnAround());
+            StartCoroutine(this.TurnAround(obstacleInfo.collider));
         }
     }
 
@@ -110,9 +110,10 @@ public class Patrol : Enemy
         return chaseSpeed * (playerDirection > 0 ? 1 : -1);
     }
 
-    private IEnumerator TurnAround()
+    private IEnumerator TurnAround(bool quickTurn)
     {
-        yield return new WaitForSeconds(waitTime);
+        if (!quickTurn)
+            yield return new WaitForSeconds(waitTime);
 
         if (currentHealth <= 0)
             yield break;
