@@ -36,8 +36,7 @@ public class GameManager : MonoBehaviour
                 RestartLevel();
             else if (Input.GetButton("Cancel"))
             {
-                Debug.Log("Quit");
-                Application.Quit();
+                BackToMenu();
             }
         }
 
@@ -52,7 +51,11 @@ public class GameManager : MonoBehaviour
     }
 
     public static void RestartLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene((int)Scenes.MainGame);
+    }
+
+    public static void BackToMenu() {
+        SceneManager.LoadScene((int)Scenes.MainMenu);
     }
 
     public void IncrementMurderCount()
