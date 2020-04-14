@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mobie
+  - MobieGenerator
   layers:
   - Default
   - TransparentFX
@@ -42,6 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3099546465
+    locked: 0
+  - name: Environment
+    uniqueID: 1685635251
+    locked: 0
   - name: Enemies
     uniqueID: 395094923
     locked: 0
@@ -50,4 +57,7 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 1644366297
+    locked: 0
+  - name: UI
+    uniqueID: 4111160817
     locked: 0
