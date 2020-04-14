@@ -28,9 +28,12 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_Grounded;            // Whether or not the player is grounded.
 	public bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
-	
+
 	void Update()
 	{
+		if (PauseMenu.isPaused)
+			return;
+
 		this.horizontalMovement = this.runSpeed * this.GetMovementCoefficient();
         this.jump = Input.GetButtonDown("Jump");
         this.holdJump = Input.GetButton("Jump");
@@ -102,7 +105,7 @@ public class CharacterController2D : MonoBehaviour
 
 		if (recoilFromRight && !m_FacingRight || !recoilFromRight && m_FacingRight)
 			Flip();
-		
+
 		recoilDurationRemaining = recoilDuration;
 	}
 
@@ -124,10 +127,10 @@ public class CharacterController2D : MonoBehaviour
 	private float GetMovementCoefficient()
     {
         var coefficient = 0;
-        
+
         var left = Input.GetButton("Left");
         var right = Input.GetButton("Right");
-        
+
         if (left && !right)
             coefficient = -1;
         else if (right && !left)

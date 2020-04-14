@@ -27,6 +27,9 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.isPaused)
+			return;
+
         if (Input.GetButtonDown("Shoot") && CanAttack())
         {
             this.Shoot();
