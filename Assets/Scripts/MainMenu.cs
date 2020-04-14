@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -20,7 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene((int)Scenes.MainGame);
+        SceneManager.LoadScene(this.skipIntro ? (int)Scenes.MainGame : (int)Scenes.Tutorial);
     }
 
     public void ToggleSkipIntro()
